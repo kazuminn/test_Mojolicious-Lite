@@ -18,21 +18,17 @@ post '/' => sub {
     my $arg = shift;
     my $number;
 
-    if (scalar($arg =~ /好き/g) < 5){
+    if (scalar(() = $arg =~ /好き/g) < 5 and scalar(() = $arg =~ /好き/g) > 0){
       $number = 50;
-    }else{
-      $number = 25;
+    	if (scalar(() = $arg =~ /おっぱい/g ) < 5 and scalar(() = $arg =~ /おっぱい/g ) > 0) {
+    	  $number += 50;
+    	}
     }
 
-    if (scalar($arg =~ /おっぱい/g ) < 5 and scalar($arg =~ /おっぱい/g ) > 0) {
-      $number += 50;
-    }else{
-      $number += 25;
-    }
     return $number;
   }
 
-  my $name = &judgment;
+  my $name = &judgment($self->param('name'));
 
   # メッセージがない場合はトップページを表示
   # フラッシュに保存
