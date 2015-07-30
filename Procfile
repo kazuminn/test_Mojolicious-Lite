@@ -1,1 +1,1 @@
-web: starman --preload-app --port $PORT myapp.pl psgi
+web: starman --preload-app --port $PORT firstapp.pl psgi
